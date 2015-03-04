@@ -119,7 +119,7 @@ def generate_basis(n): # where n is normal vector of the body frame
     
     Parameters:
     ===============
-            n = normal vector in corrdinates of Inertial Frame, 
+            n = normal vector in coordinates of Inertial Frame, 
             does not have to a unit vector (although unit vectors are prefered)
     Operation:
     ===============
@@ -129,10 +129,11 @@ def generate_basis(n): # where n is normal vector of the body frame
         make **k'**. Then we compute **k'** x **n** and compose a second 
         quaternion. \n
         Once the coordinate transformations are defined, the
-        unit vectors of the body refrence frame are computed and returned
+        unit vectors of the body reference frame are computed and returned
         in inertial refrence frame coordinates.\n
 
     '''
+    
     k = (0,0,1)
     basis = [[1,0,0],[0,1,0],[0,0,1]]
     
@@ -157,7 +158,7 @@ def generate_basis(n): # where n is normal vector of the body frame
     # make the final rotation
     new_basis = [Quaternion.rotation(i,final_quaternion) for i in basis]
     
-    return new_basis
+    return (new_basis,final_quaternion)
         
         
 def decompose_vector(vector,basis):
